@@ -1,0 +1,45 @@
+================================================================================================================================================================
+HISTORY OF THIS CODE:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 10: 2026-03-?? by Rick Davin.  Complete and Major rewrite to .NET 10.
+
+This version does NOT require Excel on the host PC running this application to generate the output workbook.
+But if you want to view the results workbook, you obviously need Excel or an equivalent spreadsheet application/reader.
+
+TODO
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 4: 2008-07-08 by Rick Davin.  Called Version 4.
+
+Coded an array to hold a collection of sheet names, corresponding to IA TYPE, and their respective row and column counts.
+This greatly improves performance as I now longer laboriously and repetitively scan through a sheet to find the last row.  
+This was time consuming for larger node dumps.  Now a 16MB node dump takes less than 8 minutes instead of more than 50.
+Excel is sluggish but you have time to fetch a cup of coffee rather than going to lunch.        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 3: 2008-04-22 by Rick Davin.  
+
+  1. Added Post_Parse and affiliated subs to add 3 columns to each sheet _compound_, _block_, and _unit_.
+  2. The NAME in Col A is chopped up into those pieces.  CAUTION: _unit_ is SUSPECT as it will only return
+     the first 2 consecutive digits that it finds within the BLOCK.  E.g. V160MAN would return 16, not 160.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Minor Revision: 2006-07-12 by Rick Davin. 
+
+  * Added optional PNT_NO to the _INDEX_ page
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 2: 2005-07-25 by Rick Davin.  
+
+  1. Upgraded to Excel 2002. 
+  2. The Sheet Stats ignores any sheet whose name begins with an underscore.  This means points on the _INDEX_ page won't be counted twice.
+  3. An Hourglass now appears while the macro chugs along.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 1: 2003-09-26 Initial version of code written by Rick Davin.  This code is a VBA macro for Excel 2000.
+
+Dependencies:
+         you *** MUST *** reference (tools, references)
+
+                   Microsoft Scripting Runtime
+
+ The two main subroutines that control the conversion process are:
+          Fox2Excel  (main entry macro)
+          Transform_FOB
+================================================================================================================================================================

@@ -1,0 +1,19 @@
+==========================================================================================================================================================================
+APPLICAION:     Fox Node Dump To Excel
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PURPOSE:    
+    This application reads an Invensys Foxboro IA Node Dump file, which is text=based, and generates an Excel workbook that organizes the data in a more 
+    readable and analyzable format.  Each TYPE read from the text file is mapped to a worksheet using the same TYPE name.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Keywords:   .NET 10, Windows Forms, Console, Excel, Invensys Foxboro IA DCS
+==========================================================================================================================================================================
+
+This version does NOT require Excel on the host PC running this application to generate the output workbook.
+But if you want to view the results workbook, you obviously need Excel or an equivalent spreadsheet application/reader.
+
+This application is hybrid application that mixes Console and Windows Forms.  
+The Windows Forms is limited to displaying a File Open Dialog for the user to select the Fox Node Dump file to be processed.  
+Once the user selects the file, the application reverts to Console mode and does all of its work in that mode.  
+This is a bit unorthodox but it works and allows me to avoid the complexity of trying to do everything in Windows Forms.
+
+
