@@ -23,7 +23,6 @@ namespace Fox_Node_Dump_Parser
                 {
                     // Register application services
                     services.AddTransient<AppWorker>();
-                    services.AddTransient<FileWorker>();
                 })
                 .Build();
 
