@@ -1,0 +1,50 @@
+preamble
+other stuff
+NAME = Whiskey:Neat04
+   TYPE = BLK1
+   PROP1 = Red
+   Prop2 = 2
+   DESCRP = Something goes here
+   LOOPID = 0123
+END 
+NAME = Whiskey-A-GoGo:177Dance
+   TYPE = BLK2
+   DESCRP = Something goes here
+   AAA = Orange
+   BBB = 2
+   LOOPID = 0045
+END 
+NAME = Tango:And99Cash
+   TYPE = BLK1
+   PROP1 = Green
+   Prop2 = 2
+   DESCRP = Something goes here
+   LOOPID = 0777
+END
+NAME = Foxtrot:Whiskey42
+   TYPE = BLK1
+   PROP1 = Blue
+   Prop2 = 9
+END
+NAME = TangoAndCash:Carry83
+   TYPE = BLK2
+   BBB = 4
+   AAA = Purple
+   DESCRP = Something goes here
+   LOOPID = 0045
+END
+NAME = Jitterbug
+   TYPE = BLK2
+   DESCRP = Not for Foxtrot
+   BBB = 123
+   LOOPID = 0777
+END
+NAME = Aaron:04Aaronson
+   TYPE = BLK1
+   PROP1 = Maroon
+   Prop2 = 2
+   DESCRP = Something goes here too
+   LOOPID = 0777
+END 
+
+
