@@ -23,16 +23,8 @@ namespace Fox_Node_Dump_Parser.Logic
             // Example of reading values from appsettings.json that was provided via DI.
             ShowDetailedStartupInfo = configuration.GetValue<bool>("showDetailedStartupInfo", true);
             UseInputFolderForOutput = configuration.GetValue<bool>("useInputFolderForOutput", true);
-            // We will clamp the number of digits in the Unit to be 2 or 3.
-            DigitsInUnit = configuration.GetValue<int>("digitsInUnit", 2);
-            if (DigitsInUnit < 2)
-            {
-                DigitsInUnit = 2;
-            }
-            else if (DigitsInUnit > 3)
-            {
-                DigitsInUnit = 3;
-            }
+            // We will clamp the number of digits in the Unit to be 2 (default) or 3.  E.g. "04" vs "004".  
+            DigitsInUnit = configuration.GetValue<bool>("unitsHave3Digits", false) ? 3 : 2;
         }
 
         public async Task DoWorkAsync()

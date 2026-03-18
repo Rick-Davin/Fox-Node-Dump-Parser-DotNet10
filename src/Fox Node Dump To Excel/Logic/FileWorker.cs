@@ -205,7 +205,7 @@ namespace Fox_Node_Dump_Parser.Logic
 
             sb.AppendLine(new string('=', width));
 
-            Console.WriteL(sb.ToString());
+            Console.Write(sb.ToString());
         }
     }
 }
