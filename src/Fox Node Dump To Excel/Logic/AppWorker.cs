@@ -13,9 +13,9 @@ namespace Fox_Node_Dump_Parser.Logic
     public class AppWorker
     {
         private IConfiguration Config { get; }
-        private int DigitsInUnit { get; }
         private bool UseInputFolderForOutput { get; }
         private bool ShowDetailedStartupInfo { get; }   
+        private bool UnitsHave3Digits { get; }  
 
         public AppWorker(IConfiguration configuration)
         {
@@ -23,8 +23,7 @@ namespace Fox_Node_Dump_Parser.Logic
             // Example of reading values from appsettings.json that was provided via DI.
             ShowDetailedStartupInfo = configuration.GetValue<bool>("showDetailedStartupInfo", true);
             UseInputFolderForOutput = configuration.GetValue<bool>("useInputFolderForOutput", true);
-            // We will clamp the number of digits in the Unit to be 2 (default) or 3.  E.g. "04" vs "004".  
-            DigitsInUnit = configuration.GetValue<bool>("unitsHave3Digits", false) ? 3 : 2;
+            UnitsHave3Digits = configuration.GetValue<bool>("unitsHave3Digits", false);
         }
 
         public async Task DoWorkAsync()
@@ -42,7 +41,7 @@ namespace Fox_Node_Dump_Parser.Logic
                 Console.WriteLine($"\tSize: {inputFile.Length:N0} bytes");
                 Console.WriteLine($"\tUTC Creation: {inputFile.CreationTimeUtc:O}");
 
-                var worker = new FileWorker(inputFile!, DigitsInUnit, UseInputFolderForOutput);
+                var worker = new FileWorker(inputFile!, UnitsHave3Digits, UseInputFolderForOutput);
                 await worker.DoWorkAsync();
             }
             else

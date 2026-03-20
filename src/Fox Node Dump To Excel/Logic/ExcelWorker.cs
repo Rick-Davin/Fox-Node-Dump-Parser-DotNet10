@@ -6,13 +6,14 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using Fox_Node_Dump_Parser.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 using System.Xml;
 
 namespace Fox_Node_Dump_Parser.Logic
 {
 
-    public class ExcelWorker : IDisposable
+    internal class ExcelWorker : IDisposable
     {
         public string BookName { get; }
         private int DigitsInUnit { get; }
@@ -56,13 +57,15 @@ namespace Fox_Node_Dump_Parser.Logic
 
         #region Construction
 
-        public static ExcelWorker Create(FileInfo inputFile, int digitsInUnit, bool useInputFolderForOutput)
+        public static ExcelWorker Create(FileInfo inputFile, bool unitsHave3Digits, bool useInputFolderForOutput)
         {
             // inputFile.Name is relative to EXE path so the output will be created in the EXE folder.
 
             string path = useInputFolderForOutput ? inputFile.FullName : inputFile.Name; 
             string name = path.Replace(inputFile.Extension, ".") + $"{inputFile.CreationTimeUtc:yyyy-MM-dd_HHmmss}.xlsx";
             XLWorkbook book = new XLWorkbook();
+            // We will clamp the number of digits in the Unit to be 2 (default) or 3.  E.g. "04" vs "004".  
+            int digitsInUnit = unitsHave3Digits ? 3 : 2;
             return new ExcelWorker(name, book, digitsInUnit);
         }
 

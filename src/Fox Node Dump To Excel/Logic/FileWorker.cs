@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Fox_Node_Dump_Parser.Logic
 {
-    public class FileWorker
+    internal class FileWorker
     {
         private FileInfo InputNodeDump { get; }
-        private int DigitsInUnit { get; }   
+        private bool UnitsHave3Digits { get; }   
         private bool UseInputFolderForOutput { get; }   
         public TimeSpan? FileReadDuration { get; private set; } = null;
         public TimeSpan? WorkbookCreateDuration { get; private set; } = null;
@@ -28,10 +28,10 @@ namespace Fox_Node_Dump_Parser.Logic
 
         // Inputs to class and method:
         //      1. inputFile - the Fox Node Dump text file to be processed   
-        public FileWorker(FileInfo inputFile, int digitsInUnit, bool useInputFolderForOutput)
+        public FileWorker(FileInfo inputFile, bool unitsHave3Digits, bool useInputFolderForOutput)
         {
             InputNodeDump = inputFile;
-            DigitsInUnit = digitsInUnit;
+            UnitsHave3Digits = unitsHave3Digits;
             UseInputFolderForOutput = useInputFolderForOutput;
         }
 
@@ -39,7 +39,7 @@ namespace Fox_Node_Dump_Parser.Logic
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            ExcelWorker xlWorker = ExcelWorker.Create(InputNodeDump, DigitsInUnit, UseInputFolderForOutput);
+            ExcelWorker xlWorker = ExcelWorker.Create(InputNodeDump, UnitsHave3Digits, UseInputFolderForOutput);
             stopwatch.Stop();
             WorkbookCreateDuration = stopwatch.Elapsed;
             stopwatch.Reset();
